@@ -1,0 +1,15 @@
+/* .pagin{
+  /* width: max-content;
+  height: max-content; */
+  /* color: brown; */
+  /* background-color: rgb(206, 120, 7); */
+/* } */ */
+
+.bod{
+  background-color: rgb(213, 213, 0);
+  width: 340px;
+  height: 100px;
+  color: rgb(21, 12, 1);
+  margin-left: 100%;
+  padding-left: 14px;
+}

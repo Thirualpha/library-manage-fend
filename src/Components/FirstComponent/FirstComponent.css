@@ -1,0 +1,71 @@
+.mapfun{
+    /* height: 50%; */
+    background-color: rgb(143, 167, 217);
+    border-radius: 10px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 12px;
+    margin-left: 40%;
+    width: 800px;
+    margin-right: 1%;
+}
+body{
+    max-width:none;
+    background-color: rgb(77, 153, 155);
+}
+h3{
+    color: rgb(252, 252, 252);
+}
+.inmapfun{
+    border-color: black;
+    background-color: rgb(61, 109, 233);
+    border-radius: 10px;
+    text-align: center;
+}
+#h4id{
+
+    padding-bottom: 15px;
+}
+#h3id{
+    text-align: center;
+    padding-top: 8px;
+}
+
+/* src/App.css */
+.App {
+    text-align: center;
+  }
+  .inputtext{
+    width: 800px;
+    margin-left: 58%;
+  }
+  input {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: rgb(194, 221, 186);
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 5px 0;
+  }
+  
