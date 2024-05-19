@@ -1,53 +1,37 @@
-import React from 'react'
-import '../FirstComponent/FirstComponent.css'
+// src/components/Pagination.js
+import React from 'react';
+import './Pagination.css';
 
-const PaginationComponent = ({currentPage , totalPage , onPageChange}) => {
-    const pages = [...Array(totalPage).keys()].map(num => num+1);
+const PaginationComponent = ({ itemsPerPage, totalItems, paginate, currentPage, previousPage, nextPage }) => {
+  const pageNumbers = [];
 
-    
-
-    // function preChange(){
-    //     if(currentPage !== 1){
-    //       setCurrentPage(currentPage-1)
-    //     }
-    //   }
-      
-    //   function nextChange(){
-    //     if(currentPage !== totalPage){
-    //       setCurrentPage(currentPage+1)
-    //     } 
-    //   }
-
-
+  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
-    <div>
-        <button onClick={()=>onPageChange(currentPage-1)} disabled={currentPage === 1}>
+    <nav>
+      <ul className="pagination">
+        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+          <a onClick={previousPage} href="!#" className="page-link">
             Previous
-        </button>
-
-
-
-        {pages.map(page=>(
-            <button key ={page} onClick={()=>onPageChange(page)}>
-                {page}
-            </button>
+          </a>
+        </li>
+        {pageNumbers.map(number => (
+          <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+            <a onClick={() => paginate(number)} href="!#" className="page-link">
+              {number}
+            </a>
+          </li>
         ))}
-
-
-
-        <button onClick={()=>onPageChange(currentPage+1)} disabled={currentPage === totalPage}>
+        <li className={`page-item ${currentPage === pageNumbers.length ? 'disabled' : ''}`}>
+          <a onClick={nextPage} href="!#" className="page-link">
             Next
-        </button>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
-       
-
-
-
-
-    </div>
-  )
-
-}
-
-export default PaginationComponent
+export default PaginationComponent;

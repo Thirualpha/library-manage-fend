@@ -1,11 +1,15 @@
+// src/components/FirstComponent.js
 import React, { useState } from "react";
 import initialData from "../Data/initialData";
 import "./FirstComponent.css";
-import secondData from "../Data/secondData";
+import PaginationComponent from "../PaginationComponent/PaginationComponent";
+
 
 const FirstComponent = () => {
   const [search, setSearch] = useState({ bookName: '', author: '' });
   const [filteredBooks, setFilteredBooks] = useState(initialData);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +27,18 @@ const FirstComponent = () => {
       );
     });
     setFilteredBooks(filtered);
+    setCurrentPage(1); // Reset to the first page on search
   };
+
+  // Get current items
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredBooks.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change page
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const previousPage = () => setCurrentPage(prev => (prev === 1 ? prev : prev - 1));
+  const nextPage = () => setCurrentPage(prev => (prev === Math.ceil(filteredBooks.length / itemsPerPage) ? prev : prev + 1));
 
   return (
     <div>
@@ -45,22 +60,27 @@ const FirstComponent = () => {
         <button onClick={handleSearch}>Search</button>
       </div>
       <div className="mapfun">
-      
         <ul>
-          {filteredBooks.map((item, index) => (
-            <div className="inmapfun">
-            <li key={index}>
-              <h3 id="h3id">Book Name is {item.BookName}</h3>
-              <h4>Author: {item.Author}</h4>
-              <h4>Published in {item.Published}</h4>
-              <h4 id="h4id">The Subject {item.Genre}</h4>
-            </li>
+          {currentItems.map((item, index) => (
+            <div className="inmapfun" key={index}>
+              <li>
+                <h3 id="h3id">Book Name is {item.BookName}</h3>
+                <h4>Author: {item.Author}</h4>
+                <h4>Published in {item.Published}</h4>
+                <h4 id="h4id">The Subject {item.Genre}</h4>
+              </li>
             </div>
           ))}
         </ul>
-      
+        <PaginationComponent
+          itemsPerPage={itemsPerPage}
+          totalItems={filteredBooks.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          previousPage={previousPage}
+          nextPage={nextPage}
+        />
       </div>
-     
     </div>
   );
 }
