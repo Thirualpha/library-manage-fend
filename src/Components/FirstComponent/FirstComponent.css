@@ -21,14 +21,16 @@ h3{
     background-color: rgb(61, 109, 233);
     border-radius: 10px;
     text-align: center;
+    padding-top: 1px;
 }
 #h4id{
 
     padding-bottom: 15px;
 }
 #h3id{
-    text-align: center;
+    /* text-align: center; */
     padding-top: 8px;
+    margin-top: 15px;
 }
 
 /* src/App.css */
@@ -62,7 +64,8 @@ h3{
   
   ul {
     list-style-type: none;
-    padding: 0;
+    padding: 1px;
+    padding-top: 25px;
   }
   
   li {
